@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+center {
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 50%;
+    margin: auto;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    width: 100%;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+/* CSS */
+label {
+    font-family: "Arial", sans-serif; /* Change the font family as needed */
+    font-size: 20px; /* Optional: Adjust the font size */
+    color: #333; /* Optional: Adjust the text color */
+}

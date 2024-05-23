@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registering Page</title>
+    <style>
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 45%; /* Adjusted width */
+            margin-right: 20px; /* Added margin */
+        }
+
+        .record-capture-container {
+            width: 45%; /* Adjusted width */
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select,
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            width: calc(100% - 24px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            margin-bottom: 20px;
+        }
+
+        #recording-section {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #camera-preview {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #captured-picture-container {
+            margin-top: 10px;
+        }
+
+        /* Adjusted button styling */
+        button {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styling for specific buttons */
+        #record-button,
+        #stop-button {
+            background-color: #dc3545; /* Red color */
+        }
+
+        #record-button:hover,
+        #stop-button:hover {
+            background-color: #c82333; /* Darker shade of red */
+        }
+
+        #activate-camera-button {
+            background-color: #28a745; /* Green color */
+        }
+
+        #activate-camera-button:hover {
+            background-color: #218838; /* Darker shade of green */
+        }
+
+        /* Adjusted input styling */
+        input[type="number"] {
+            width: calc(100% - 26px); /* Adjusted width */
+        }
+
+        /* Adjusted form layout for smaller screens */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .form-container,
+            .record-capture-container {
+                width: 100%;
+                margin-bottom: 20px; /* Added margin */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <nav>
+        <a href="read">Read</a>
+        <a href="update">Update</a>
+        <a href="delete">Delete</a>
+    </nav>
+    </center>
+    <center>
+    <h1>REGISTRATION</h1>
+    </center>
+    <form action="http://127.0.0.1:9000/submission" method="POST" enctype="multipart/form-data">
+        <div class="container">
+                <div class="form-container"> 
+                        <table>
+                            <tr>
+                                <td><label for="name">Provide Name:</label></td>
+                                <td><input type="text" name="name" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="surname">Provide Surname:</label></td>
+                                <td><input type="text" name="surname" required></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td><label for="id">Provide ID No:</label></td>
+                                <td><input type="text" name="id" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="address">Provide Address:</label></td>
+                                <td><input type="text" name="address" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="account">Provide Account Number:</label></td>
+                                <td><input type="text" name="account" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="pin">Create your PIN:</label></td>
+                                <td><input type="password" name="pin" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="confirm_pin">Confirm your PIN:</label></td>
+                                <td><input type="password" name="confirm_pin" required></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" value="REGISTER"/>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="record-capture-container">
+                    <div id="recording-section" class="content">
+                        <h2>Record a Message</h2>
+                        <!-- Buttons for recording and stopping -->
+                        <button type="button" id="record-button">Record</button>
+                        <button type="button" id="stop-button">Stop</button>
+                    </div>
+                    <!-- Add a button to activate the camera -->
+                    <button type="button" onclick="activateCamera()">Activate Camera</button>
+                    <!-- Add a video element to display the camera feed -->
+                    <video id="camera-preview" width="400" height="300"></video>
+                    <!-- Add a button to capture the picture -->
+                    <button type="button" onclick="capturePicture()">Capture Picture</button>
+                    <!-- Container to display the captured picture -->
+                    <div id="captured-picture-container"></div>
+
+                    <!--data to be sent to the  server-->
+                    <input type="hidden" id="picture-data" name="picture_data">
+                    <input type="hidden" id="voice-data" name="voice_data">
+                </div>
+        </div>
+    </form>
+    <script>
+
+        //
+        function generateAccountNumber() {
+            return Math.floor(Math.random()*900000) + 100000;
+        }
+
+        window.onload = function() {
+            setAccountNumber();
+        }
+
+        // Function to generate a random 6-digit account number
+        function generateAccountNumber() {
+            // Generate a random number between 100000 and 999999
+            return Math.floor(Math.random() * 900000) + 100000;
+        }
+    
+        // Call setAccountNumber when the page loads
+        window.onload = function () {
+            setAccountNumber();
+        };
+    
+        // Function to capture picture
+        function capturePicture() {
+            const video = document.getElementById('camera-preview');
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+    
+            // Set canvas dimensions to match the video feed
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+    
+            // Draw the current frame from the video onto the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+            // Convert the canvas content to a data URL representing the picture
+            const pictureDataUrl = canvas.toDataURL('image/jpeg');
+    
+            // Display the captured picture
+            const pictureContainer = document.getElementById('captured-picture-container');
+            pictureContainer.innerHTML = ''; // Clear previous picture if any
+            const img = document.createElement('img');
+            img.src = pictureDataUrl;
+            img.width = 200; // Set the width of the displayed image
+            img.height = 150; // Set the height of the displayed image
+            pictureContainer.appendChild(img);
+        }
+    
+        let cameraStream; // Variable to store the camera stream
+    
+        // Function to activate the camera
+        function activateCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    const video = document.getElementById('camera-preview');
+                    video.srcObject = stream;
+                    video.play();
+                    cameraStream = stream; // Store the camera stream
+                })
+                .catch(error => {
+                    console.error('Error accessing camera:', error);
+                });
+        }
+    
+        // Function to capture picture
+        function capturePicture() {
+            if (!cameraStream) {
+                console.error('Camera is not activated');
+                return;
+            }
+    
+            const video = document.getElementById('camera-preview');
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+    
+            // Set canvas dimensions to match the video feed
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+    
+            // Draw the current frame from the video onto the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+            // Convert the canvas content to a data URL representing the picture
+            const pictureDataUrl = canvas.toDataURL('image/jpeg');
+    
+            // Display the captured picture temporarily
+            const pictureContainer = document.getElementById('captured-picture-container');
+            pictureContainer.innerHTML = ''; // Clear previous picture if any
+            const img = document.createElement('img');
+            img.src = pictureDataUrl;
+            img.width = 200; // Set the width of the displayed image
+            img.height = 150; // Set the height of the displayed image
+            pictureContainer.appendChild(img);
+    
+            // Store the picture data URL in a hidden input field
+            document.getElementById('picture-data').value = pictureDataUrl;
+    
+            // Deactivate the camera
+            deactivateCamera();
+        }
+    
+        // Function to deactivate the camera
+        function deactivateCamera() {
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+        }
+    
+        window.onload = function () {
+            const recordButton = document.getElementById('record-button');
+            const stopButton = document.getElementById('stop-button');
+            const providedWords = 'Deposit, Withdraw, Check balance, Send cash';
+    
+            // Function to read a message aloud
+            function readMessage(message) {
+                const speechSynthesis = window.speechSynthesis;
+                const speechMessage = new SpeechSynthesisUtterance(message);
+                speechSynthesis.speak(speechMessage);
+            }
+    
+            // Function to handle button click event for recording
+            function handleRecordButtonClick() {
+                const message = "Please speak the following words after the system prompts you: " + providedWords;
+                readMessage(message);
+    
+                // Request access to the user's microphone
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function (stream) {
+                        const mediaRecorder = new MediaRecorder(stream);
+                        const chunks = [];
+    
+                        // Start recording
+                        mediaRecorder.start();
+    
+                        // Event listener for recording data
+                        mediaRecorder.ondataavailable = function (event) {
+                            chunks.push(event.data);
+                        };
+    
+                        // Event listener for stopping recording
+                        mediaRecorder.onstop = function () {
+                            // Combine recorded chunks into a single blob
+                            const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+    
+                            // Store the audio data in a hidden input field
+                            document.getElementById('voice-data').value = window.URL.createObjectURL(audioBlob);
+    
+                            // Perform word comparison and provide feedback
+                            const recognizedText = providedWords.toLowerCase();
+                            const transcript = ''; // Get the user's transcript from the server response
+                            if (transcript.toLowerCase() === recognizedText) {
+                                alert('Great! The words were pronounced correctly.');
+                            } else {
+                                alert('Great! The words were pronounced correctly.');
+                            }
+                        };
+    
+                        // Stop recording when stop button is clicked
+                        stopButton.onclick = function () {
+                            mediaRecorder.stop();
+                        };
+                    })
+                    .catch(function (error) {
+                        console.error('Error accessing microphone:', error);
+                    });
+            }
+    
+            // Event listener for the record button
+            recordButton.onclick = handleRecordButtonClick;
+        };
+
+        // Function to validate PIN and confirmed PIN
+        function validatePins() {
+            var pin = document.getElementsByName('pin')[0].value;
+            var confirmPin = document.getElementsByName('confirm_pin')[0].value;
+            if (pin !== confirmPin) {
+                alert('PIN and confirmed PIN do not match!');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+
+        // Event listener for form submission
+        document.querySelector('form').addEventListener('submit', function(event) {
+            if (!validatePins()) {
+                event.preventDefault(); // Prevent form submission if PINs don't match
+            }
+        });
+
+    </script>
+</body>
+</html>

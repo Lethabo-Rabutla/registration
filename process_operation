@@ -1,0 +1,17 @@
+from flask import Flask, request, session
+from flask_session import Session
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '12345'
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
+
+@app.route('/process_operation', methods=['POST'])
+def process_operation():
+    name = request.form.get('name')
+    session['operation'] = name
+    print("Name:", name)  # Print the name in the terminal
+    return "Name printed in the terminal"
+
+if __name__ == '__main__':
+    app.run(debug=True)
